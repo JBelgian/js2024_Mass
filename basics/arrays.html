@@ -18,6 +18,17 @@
     </div>
     <script>
         let fruits = ["apple", "banana", "cherry"];
+        // array push
+        fruits.push("cranberry");
+
+        // while does the same...
+        let i = 0;
+        while (i < fruits.length) {
+            console.log(fruits[i]);
+            i++;
+        }
+       
+
         let demo = document.getElementById("demo");
         demo.innerHTML = fruits;
         
