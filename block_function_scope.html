@@ -13,13 +13,14 @@
         var x = 5;
         if (true) {
             var y = 10;
+            let z = 10000;
             console.log(x); // Output: 5
             console.log(y); // Output: 10
-            console.log(z); // Output: 0
-            z=10;
+            console.log(z); // Output: 10000  
         }
         console.log(x); // Output: 5
         console.log(y); // Output: 10
+        console.log(z); // Output: 10000 // z is block-scoped and is not the same as the global z
         }
         example3();
 
@@ -33,11 +34,9 @@
         }
         console.log(x); // Output: 5
         console.log(y); // ReferenceError: y is not defined
-        
         }
         example4();
-        console(z);
-
+        console.log(z);
     </script>
 </body>
 </html>
