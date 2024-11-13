@@ -1,12 +1,13 @@
-const url = 'https://jsonplaceholder.typicode.com/todos';
+const url = 'http://localhost:3000/posts';
 const output = document.getElementById('output');
 
 function fetchdata() {
+    output.innerHTML = '';
     fetch(url)
     .then(res => res.json())
     .then(
         data => data.forEach(smurf => {
-            output.innerHTML += `<li>${smurf.title}</li>`;
+            output.innerHTML += `<div class="post-item"><li>${smurf.id} ${smurf.title} </li><button onclick="deletePost('${smurf.id}')">Delete</button></div>`;
         })
     )
     .catch(e => console.log(e));
@@ -14,11 +15,34 @@ function fetchdata() {
 fetchdata();
 
 const button = document.getElementById('clear');
-button.addEventListener('click', () => {
-    output.innerHTML = '';
-})
 
-console.log(data)
+
+
+function deletePost(id) {
+    fetch(`${url}/${id}`, {
+        method: 'DELETE'
+    })
+    .then(() => fetchdata())
+    .catch(e => console.error('Error deleting post:', e));
+}
+
+function addPost () {
+    const newPost = {
+        title: document.getElementById('title').value,
+        views: parseInt(document.getElementById('views').value),
+        likes: parseInt(document.getElementById('likes').value) || 0
+    };
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newPost)
+    })
+    .then(() => fetchdata())
+    .catch(e => console.error('Error adding post:', e));
+}
+
 // HTTP VERB (GET) (POST,DELETE,PUT)
 
 // SUBPROBLEMS
