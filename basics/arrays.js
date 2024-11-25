@@ -115,33 +115,90 @@ function checkForFruitIncludes(array) {
 // Find does a callback on every item in the array and returns the first item that matches the condition
 // If no item matches the condition, it returns undefined
 
+function checkForFruitFind(array) {
+    return array.find(item => item.category === "fruit");
+    // return array.find(function (item) {
+    //     return item.category === "fruit";
+    // })
+}
+console.log(checkForFruitFind(myArray));
 
 // Now using an buil-in array method: some (opposite of every)
 // Some is useless in this case because we are not checking if all items match the condition
 // Some does a callback on every item in the array and returns true if any item matches the condition (possible scenario check food for nut allergy)
 // If no item matches the condition, it returns false
 
+function checkForFruitSome(array) {
+    return array.some(item => item.category === "fruit");
+}
+
+console.log(checkForFruitSome(myArray));
 
 // Now using an buil-in array method: every
 // Every does a callback on every item in the array and returns true if all items match the condition
 // If any item does not match the condition, it returns false
 
+function checkForFruitEvery(array) {
+    return array.every(item => item.category === "fruit");
+}
+
+console.log(checkForFruitEvery(myArray));
+
 // Now using an buil-in array method: filter
 // Filter does a callback on every item in the array and returns a new array with the items that match the condition
 // If no item matches the condition, it returns an empty array
 
+function checkForFruitFilter(array) {
+    return array.filter(item => item.category === "fruit");
+}
+
+console.log(checkForFruitFilter(myArray));
+
 // Now using an built-in array method: forEach
 // ForEach does a callback on every item in the array
-// If no item matches the condition, it returns undefined
+// If no item matches the condition, it returns true or false
 
+function checkForFruitForEach(array) {
+    let result = false;
+    array.forEach(item => {
+        if (item.category === "fruit") {
+            result = true;
+        }
+    });
+    return result;
+}
+
+console.log(checkForFruitForEach(myArray));
 
 // Get the items that cost more then 5 dollars
 
-// Sort the array by price
-// https://youtu.be/rRgD1yVwIvE?t=1274
-// Easier to sort in the api
+function getItemsThatCostMoreThanTwo(array) {
+    return array.filter(item => item.price > 5);
+}
+console.log(getItemsThatCostMoreThanTwo(myArray));
 
-// Sort the array by name with ternary operator
+function sortByPrice(array) {
+    // make and endpoint call to the api 
+    // SELECT * FROM products WHERE category = 'fruit' ORDER BY price DESC;
+    return array.sort((a, b) => {
+        // if a is less than b, return -1
+        if (a.price < b.price) {
+            return -1;
+        }
+        // if a is greater than b, return 1
+        if (a.price > b.price) {
+            return 1;
+        }
+        return 0;
+    });
+}
+
+// Sort the array by price with ternary operator
+function sortByPriceTernary(array) {
+    return array.sort((a, b) => {
+          return a.price < b.price ? -1 : a.price > b.price ? 1 : 0;
+    });
+}
 
 // REDUCE - takes an array of objects and returns a single value
 // https://www.youtube.com/watch?v=s1XVfm5mIuU
@@ -152,8 +209,43 @@ function checkForFruitIncludes(array) {
 // if you don't provide an initial value, the first item in the array will be used as the initial value
 // Get the total quantity of all items in the fruit category
 
+function getTotalQuantityOfFruitReduce(array) {
+    return array.reduce((total, item) => {
+        if (item.category === "fruit") {
+            return total + item.quantity;
+        }
+        return total;
+    }, 0);
+}
+
+console.log('amount of fruits: ' + getTotalQuantityOfFruitReduce(myArray));
+
 // Why Is Array/Object Destructuring So Useful And How To Use It
 // https://www.youtube.com/watch?v=NIq3qLaHCIs
 // Destructuring is a way to extract data from an array or object
 // and assign it to a variable
 // Destructuring an array
+let myArray3 = ["apple", "banana", "carrot"];
+let [fruitD1, fruitD2, fruitD3] = myArray3;
+console.log(fruitD1); // apple
+
+// Destructuring an object
+let myObject = {
+    fruitname: "apple",
+    price: 1.99,
+    quantity: 5,
+    category: "fruit",
+    origin: {
+        country: "USA",
+        state: "California"
+    }
+};
+
+let { fruitname, price, ...rest} = myObject;
+let { country, state } = myObject.origin;
+let { origin: { country: country2, state: state2 } } = myObject;
+console.log(rest); // apple
+console.log (country); // USA
+console.log (state); // California 
+console.log (country2); // USA
+console.log (state2); // California
