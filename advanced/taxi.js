@@ -1,13 +1,23 @@
 // taxi class definition
 class Taxi {
+    #farePerKm
     constructor(make, model, client) {
         this.make = make; // Make of the taxi
         this.model = model; // Model of the taxi
         this.totalDistance = 0; // Total distance traveled in KM
-        this.farePerKm = 2.6;
+        this.#farePerKm = 2.6;
         this.fare = 0;
         this.startFee = 3.5;
         this.client = client;
+    }
+
+    setFarePerKm (value) {
+        if (value < 5) {
+            console.log('No this is not enough... we will not survive with these fees');
+            return
+        } else {
+            this.#farePerKm = value;
+        }
     }
 
     // Method to start a new fare
@@ -67,3 +77,11 @@ myTaxi.calculateTotalFare();
 
 // End the trip and reset
 myTaxi.endTrip();
+
+// PUBLIC: ACCESSIBLE FROM OBJECT INSTANTIATION (myTaxi)
+// PRIVATE: ONLY ACCESSIBLE FROM WITHIN THE CLASS
+
+// WAT IS HET PROBLEEM? (WE MAKKE?)
+
+myTaxi.setFarePerKm(3); // this not possible, cuz the propertie is private (and can only be set with a setter)
+myTaxi.calculateTotalFare();
