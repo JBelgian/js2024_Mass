@@ -40,7 +40,7 @@ class Taxi {
     // Method to calculate the total fare
     calculateTotalFare () {
         this.fare = this.fare + this.startFee;
-        this.fare += this.farePerKm * this.totalDistance;
+        this.fare += this.#farePerKm * this.totalDistance;
         console.log(`Total fare for ${this.totalDistance} km. is ${this.fare.toFixed(2)} EUR`);
         return this.fare;
     }
@@ -83,5 +83,5 @@ myTaxi.endTrip();
 
 // WAT IS HET PROBLEEM? (WE MAKKE?)
 
-myTaxi.setFarePerKm(3); // this not possible, cuz the propertie is private (and can only be set with a setter)
+myTaxi.setFarePerKm(6); // this not possible, cuz the propertie is private (and can only be set with a setter)
 myTaxi.calculateTotalFare();
