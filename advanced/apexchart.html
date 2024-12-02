@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bar Chart of Top 20 Countries by Compute Power</title>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script
+src="https://code.jquery.com/jquery-3.7.1.slim.js"
+integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+crossorigin="anonymous"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="chart"></div>
+
+<table class="table" id="dynatable">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+<script>
+        const options = {
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            series: [{
+                name: 'Compute Power',
+                data: [2500, 2000, 1800, 1600, 1500, 1400, 1300, 1200, 1100, 1000, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450] // Example data
+            }],
+            xaxis: {
+                categories: ['USA', 'China', 'Japan', 'Germany', 'UK', 'France', 'Canada', 'Russia', 'India', 'Brazil', 'Australia', 'Italy', 'Spain', 'Netherlands', 'Sweden', 'Switzerland', 'South Korea', 'Singapore', 'Norway', 'Denmark', 'Finland']
+            },
+            title: {
+                text: 'Top 20 Countries by Compute Power',
+                align: 'center'
+            }
+        }
+
+        const chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+   
+    <script>
+        let table = new DataTable('#dynatable');
+    </script>
+</body>
+</html>
+
