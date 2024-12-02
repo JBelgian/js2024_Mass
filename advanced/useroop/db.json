@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": "ac08",
+      "email": "massimo@mas.com",
+      "password": "5906391680"
+    },
+    {
+      "id": "ac09",
+      "email": "massimo1@mas.com",
+      "password": "5906391680"
+    },
+    {
+      "id": "ac10",
+      "email": "massimo2@mas.com",
+      "password": "5906391680"
+    },
+    {
+      "id": "fe4d",
+      "email": "test@test.com",
+      "password": "5906391680"
+    },
+    {
+      "id": "a115",
+      "email": "santa@santa.com",
+      "password": "5906391680"
+    }
+  ],
+  "requests": []
+}

@@ -13,7 +13,7 @@
         <div class="glass-container col-md-6">
             <h1 class="text-center mb-4 christmas-title">🎅 Santa's Workshop</h1>
             <div id="loginForm">
-                <form onsubmit="return auth.login(event)">
+                <form id="loginForm">
                     <div class="mb-3">
                         <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
                     </div>
@@ -22,12 +22,12 @@
                     </div>
                     <button type="submit" class="btn btn-christmas w-100 mb-3">Login</button>
                     <p class="text-center text-white">
-                        Not registered? <a href="#" onclick="auth.toggleForms()" class="text-white">Register here</a>
+                        Not registered? <a href="#" id="showRegister" class="text-white">Register here</a>
                     </p>
                 </form>
             </div>
             <div id="registerForm" style="display: none;">
-                <form onsubmit="return auth.register(event)">
+                <form id="registerForm">
                     <div class="mb-3">
                         <input type="email" class="form-control" id="registerEmail" placeholder="Email" required>
                     </div>
@@ -36,7 +36,7 @@
                     </div>
                     <button type="submit" class="btn btn-christmas w-100 mb-3">Register</button>
                     <p class="text-center text-white">
-                        Already registered? <a href="#" onclick="auth.toggleForms()" class="text-white">Login here</a>
+                        Already registered? <a href="#" id="showLogin" class="text-white">Login here</a>
                     </p>
                 </form>
             </div>
